@@ -1,0 +1,18 @@
+:root {
+    --border-1px: 1px solid black;
+
+    --primary: #A94438;
+    --secondary: #D24545;
+    --tertiary: #E6BAA3;
+    --quaternary: #E4DEBE;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    background-color: var(--quaternary);
+}
+
+

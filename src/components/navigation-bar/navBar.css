@@ -1,0 +1,34 @@
+.nav-bar {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    border: var(--border-1px);
+    padding: 0.5rem 8rem;
+}
+
+.nav-logo {
+    font-size: 3rem;
+}
+
+.nav-logo > li > a {
+    font-family: 'Fascinate', sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 15%;
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+.nav-links > li {
+    border: var(--border-1px);
+}
+
+.nav-links > li > a, .nav-logo > li > a {
+    text-decoration: none;
+    color: #000;
+}
