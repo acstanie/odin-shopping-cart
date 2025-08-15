@@ -1,7 +1,25 @@
+import CartCard from '../../components/cart-card/CartCard';
 
-export default function Cart() {
+import './cart.css';
+
+export default function Cart(props) {
+
+    if (props.cartItems.length === 0) {
+        return (
+            <div className="cart-page">
+                <div className='cart-page-heading'>
+                    <h1>No Items in Cart</h1>
+                </div>
+            </div>
+        )
+    }
 
     return (
-        <h1>Welcome to the Cart Page</h1>
+        <div className="cart-page">
+            <div className='cart-page-heading'>
+                <h1>Items in Cart</h1>
+            </div>
+            <CartCard cartItems={props.cartItems}/>
+        </div>
     )
 }

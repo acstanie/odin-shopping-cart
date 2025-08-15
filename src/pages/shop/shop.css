@@ -1,6 +1,21 @@
 .shop-page {
-    border: var(--border-1px);
-    display: grid;
-    grid-template-rows: 1fr auto;
-    grid-template-columns: 1fr;
+    padding: 2rem 8rem;
+}
+
+.shop-page-heading {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.shop-page-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.products-loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

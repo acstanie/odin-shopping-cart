@@ -1,0 +1,38 @@
+import { useEffect } from 'react';
+
+import './cartCard.css';
+
+export default function CartCard(props) {
+    console.log(props.cartItems)
+
+    return(
+        <>
+            {props.cartItems.map((cartItem) => (
+                <div className='cart-card' key={cartItem.id}>
+                    <div className="cart-card-product">
+                        <div className="cart-card-product-img">
+                            <img src={cartItem.image} alt="" />
+                        </div>
+                        <div className='cart-card-product-info'>
+                            <div className='cart-card-product-info-details'>
+                                <h3 className='cart-card-product-info-details-name'>{cartItem.name}</h3>
+                                <h3>${cartItem.price}</h3>
+                                <h3>Quantity: 0</h3>
+                            </div>
+                            <div className="cart-card-product-info-total-price">
+                                <h2>Total Price: $</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="cart-card-btns">
+                        <button className='cart-card-checkout-btn'>Checkout</button>
+                        <button className='cart-card-del-btn'>Delete</button>
+                    </div>
+                    
+                </div>
+            ))}
+            
+        </>
+        
+    );
+};

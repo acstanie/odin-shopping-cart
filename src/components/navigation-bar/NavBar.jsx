@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 
 import './navBar.css';
 
-export default function NavBar() {
+export default function NavBar(props) {
+    
     return(
         <>
             <nav>
@@ -14,11 +15,11 @@ export default function NavBar() {
                     </div>
 
                     <div className="nav-links">
-                        <li>
+                        <li className='nav-shop-link'>
                             <Link to="shop">Shop</Link>
                         </li>
-                        <li>
-                            <Link to="cart">Cart</Link>
+                        <li className='nav-cart-link'>
+                            <Link to="cart">Cart<span>{props.cartItems.length}</span></Link>
                         </li>
                     </div>
                 </ul>

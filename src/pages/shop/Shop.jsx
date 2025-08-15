@@ -1,14 +1,71 @@
-import NavBar from "../../components/navigation-bar/NavBar"
+import { useState, useEffect } from "react";
 
-import "./shop.css"
+import Card from "../../components/card/Card";
 
-export default function Shop() {
+import "./shop.css";
+
+export default function Shop(props) {
+
+    const [ productDetails, setProductDetails ] = useState(null);
+    const [ productDetailsError, setProductDetailsError ] = useState(null);
+    const [ productDetailsLoading, setProductDetailsLoading ] = useState(true);
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products', 
+            {
+                mode: 'cors',
+            }
+        )   
+        .then(response => response.json())
+        .then(data => {
+            const products = [];
+
+            for (let i = 0; i <= 19; i++) {
+                const product = {
+                    id: data[i].id,
+                    name: data[i].title,
+                    desc: data[i].description,
+                    price: data[i].price,
+                    image: data[i].image,
+                };
+
+                products.push(product);
+            }
+
+            setProductDetails(products);
+        })
+        .catch(error => setProductDetailsError(error))
+        .finally(() => setProductDetailsLoading(false));
+    }, []);
+
+    function handleAddToCartClick() {
+        console.log('clicked');
+    }
+
+    if (productDetailsError) {
+        return(
+            <p> A network error was encountered</p>
+        );
+    }
+
+    if (productDetailsLoading) {
+        return (
+            <div className="shop-page">
+                <div className="shop-page-heading">
+                    <h1>Loading...</h1> 
+                </div>
+            </div>
+        );
+    }
+
     return(
         <div className="shop-page">
-            <NavBar />
-            <div className="shop-content">
-                <h1>Welcome to the shop page    </h1>
+            <div className="shop-page-heading">
+                <h1>Available Items</h1>
+            </div>
+            <div className="shop-page-content">
+                {productDetails && <Card productDetails={productDetails} handleAddToCartClick={handleAddToCartClick}/>}
             </div>
         </div>
-    )
+    );
 }

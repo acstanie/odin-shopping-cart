@@ -1,34 +1,53 @@
 .nav-bar {
-    height: 100%;
     list-style: none;
     display: flex;
     justify-content: space-between;
-    border: var(--border-1px);
-    padding: 0.5rem 8rem;
+    padding: 1rem 8rem;
+    box-shadow: 2px 2px 8px -4px;
 }
 
 .nav-logo {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .nav-logo > li > a {
     font-family: 'Fascinate', sans-serif;
+    text-decoration: none;
+    color: var(--primary);
 }
 
 .nav-links {
+    border-radius: 2rem;
+    padding: 1rem;
+    box-shadow: 2px 2px 8px -4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 15%;
-    font-size: 1.25rem;
-    font-weight: 100;
+    width: 20%;
+    font-size: 1rem;
+    font-weight: bold;
+
 }
 
-.nav-links > li {
-    border: var(--border-1px);
-}
-
-.nav-links > li > a, .nav-logo > li > a {
+.nav-shop-link > a {
     text-decoration: none;
-    color: #000;
+    color: var(--primary);
+    
+}
+
+.nav-cart-link > a {
+    text-decoration: none;
+    color: var(--primary);
+    /* padding: 0.5rem 1rem; */
+}
+
+.nav-cart-link > a > span {
+    margin-left: 0.125rem;
+    
+    border-radius: 50%;
+    font-weight: lighter;
+    font-size: 0.75rem;
+    padding: 0 0.25rem 0.0625rem 0.25rem;
+    background-color: var(--primary);
+    color: #fff;
 }
