@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import './cartCard.css';
 
 export default function CartCard(props) {
-    console.log(props.cartItems)
-
     return(
         <>
             {props.cartItems.map((cartItem) => (
@@ -17,10 +15,10 @@ export default function CartCard(props) {
                             <div className='cart-card-product-info-details'>
                                 <h3 className='cart-card-product-info-details-name'>{cartItem.name}</h3>
                                 <h3>${cartItem.price}</h3>
-                                <h3>Quantity: 0</h3>
+                                <h3>Quantity: {cartItem.quantity}</h3>
                             </div>
                             <div className="cart-card-product-info-total-price">
-                                <h2>Total Price: $</h2>
+                                <h2>Total Price: ${(cartItem.price * cartItem.quantity).toFixed(2)}</h2>
                             </div>
                         </div>
                     </div>

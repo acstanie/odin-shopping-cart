@@ -69,7 +69,7 @@
 }
 
 .cart-card-del-btn {
-    background-color: #ff0000;
-    color: #fff;
+    background-color: var(--secondary);
+    color: #000;
 }
 

@@ -27,6 +27,7 @@ export default function Shop(props) {
                     desc: data[i].description,
                     price: data[i].price,
                     image: data[i].image,
+                    quantity: 0,
                 };
 
                 products.push(product);
@@ -38,8 +39,17 @@ export default function Shop(props) {
         .finally(() => setProductDetailsLoading(false));
     }, []);
 
-    function handleAddToCartClick() {
-        console.log('clicked');
+    function handleAddToCartClick(e) {
+        const productId = e.target.parentElement.parentElement.parentElement.id;
+        const quantityInput = document.querySelector(`#${productId} > .item-card-details > .item-card-details-mid > input`);
+
+        productDetails.forEach( product => {
+            if (productId == `card-${product.id}`) {
+                product.quantity = quantityInput.value;
+                props.setCartItems([...props.cartItems, product]);
+            } 
+            console.log(product.quantity)
+        });
     }
 
     if (productDetailsError) {
@@ -64,7 +74,7 @@ export default function Shop(props) {
                 <h1>Available Items</h1>
             </div>
             <div className="shop-page-content">
-                {productDetails && <Card productDetails={productDetails} handleAddToCartClick={handleAddToCartClick}/>}
+                {productDetails && <Card productDetails={productDetails} handleAddToCartClick={(e) => handleAddToCartClick(e)}/>}
             </div>
         </div>
     );
