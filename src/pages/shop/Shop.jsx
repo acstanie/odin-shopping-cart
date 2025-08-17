@@ -27,7 +27,7 @@ export default function Shop(props) {
                     desc: data[i].description,
                     price: data[i].price,
                     image: data[i].image,
-                    quantity: 0,
+                    quantity: null,
                 };
 
                 products.push(product);
@@ -40,15 +40,23 @@ export default function Shop(props) {
     }, []);
 
     function handleAddToCartClick(e) {
+        console.log('clicked');
         const productId = e.target.parentElement.parentElement.parentElement.id;
         const quantityInput = document.querySelector(`#${productId} > .item-card-details > .item-card-details-mid > input`);
 
-        productDetails.forEach( product => {
+        productDetails.forEach( (product) => {
             if (productId == `card-${product.id}`) {
-                product.quantity = quantityInput.value;
+                for (let i = 0; i < props.cartItems.length; i++) {
+                    if(props.cartItems[i].id === product.id) {
+                        props.cartItems[i].quantity += Number(quantityInput.value);
+                        console.log('match');
+
+                        return;
+                    }
+                }
+                product.quantity += Number(quantityInput.value);
                 props.setCartItems([...props.cartItems, product]);
             } 
-            console.log(product.quantity)
         });
     }
 

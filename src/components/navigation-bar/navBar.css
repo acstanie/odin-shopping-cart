@@ -17,9 +17,7 @@
 }
 
 .nav-links {
-    border-radius: 2rem;
     padding: 1rem;
-    box-shadow: 2px 2px 8px -4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
