@@ -3,10 +3,24 @@ import { useEffect } from 'react';
 import './cartCard.css';
 
 export default function CartCard(props) {
+    function handleCartDelClick(e) {
+        const products = [...props.cartItems];
+        const cartCardId = e.target.parentElement.parentElement.id;
+
+
+        for (let i = 0; i < products.length; i++) {
+            if (cartCardId == `cart-card-${products[i].id}`) {
+                products.splice(i, 1);
+                props.setCartItems(products);
+            } 
+        }
+    }
+
+
     return(
         <>
             {props.cartItems.map((cartItem) => (
-                <div className='cart-card' key={cartItem.id}>
+                <div id={`cart-card-${cartItem.id}`} className='cart-card' key={cartItem.id}>
                     <div className="cart-card-product">
                         <div className="cart-card-product-img">
                             <img src={cartItem.image} alt="" />
@@ -24,7 +38,7 @@ export default function CartCard(props) {
                     </div>
                     <div className="cart-card-btns">
                         <button className='cart-card-checkout-btn'>Checkout</button>
-                        <button className='cart-card-del-btn'>Delete</button>
+                        <button className='cart-card-del-btn' onClick={(e) => handleCartDelClick(e)}>Delete</button>
                     </div>
                     
                 </div>

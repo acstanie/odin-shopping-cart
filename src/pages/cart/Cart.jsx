@@ -19,7 +19,9 @@ export default function Cart(props) {
             <div className='cart-page-heading'>
                 <h1>Items in Cart</h1>
             </div>
-            <CartCard cartItems={props.cartItems}/>
+            <CartCard 
+                cartItems={props.cartItems} 
+                setCartItems={props.setCartItems} />
         </div>
     )
 }

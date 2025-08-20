@@ -17,7 +17,7 @@ export default function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='shop' element={<Shop setCartItems={setCartItems} cartItems={cartItems}/>} />
-                <Route path='cart' element={<Cart cartItems={cartItems}/>} />
+                <Route path='cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems}/>} />
             </Routes>  
         </div>
     );

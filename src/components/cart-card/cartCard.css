@@ -66,10 +66,12 @@
 .cart-card-checkout-btn {
     background-color: var(--primary);
     color: #fff;
+    cursor: pointer;
 }
 
 .cart-card-del-btn {
     background-color: var(--secondary);
     color: #000;
+    cursor: pointer;
 }
 

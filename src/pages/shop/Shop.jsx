@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Card from "../../components/card/Card";
+import { dummy } from "../../utils/localStorage";
 
 import "./shop.css";
 
@@ -27,7 +28,7 @@ export default function Shop(props) {
                     desc: data[i].description,
                     price: data[i].price,
                     image: data[i].image,
-                    quantity: null,
+                    quantity: 0,
                 };
 
                 products.push(product);
@@ -40,16 +41,15 @@ export default function Shop(props) {
     }, []);
 
     function handleAddToCartClick(e) {
-        console.log('clicked');
-        const productId = e.target.parentElement.parentElement.parentElement.id;
-        const quantityInput = document.querySelector(`#${productId} > .item-card-details > .item-card-details-mid > input`);
+        const productId = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+        const quantityInput = document.querySelector(`.quantity`);
+        console.log(productId);
 
         productDetails.forEach( (product) => {
             if (productId == `card-${product.id}`) {
                 for (let i = 0; i < props.cartItems.length; i++) {
                     if(props.cartItems[i].id === product.id) {
                         props.cartItems[i].quantity += Number(quantityInput.value);
-                        console.log('match');
 
                         return;
                     }
