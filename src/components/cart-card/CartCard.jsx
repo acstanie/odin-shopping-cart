@@ -16,7 +16,6 @@ export default function CartCard(props) {
         }
     }
 
-
     return(
         <>
             {props.cartItems.map((cartItem) => (
@@ -40,7 +39,6 @@ export default function CartCard(props) {
                         <button className='cart-card-checkout-btn'>Checkout</button>
                         <button className='cart-card-del-btn' onClick={(e) => handleCartDelClick(e)}>Delete</button>
                     </div>
-                    
                 </div>
             ))}
             

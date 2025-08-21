@@ -1,8 +1,8 @@
-
+import { useState } from "react";
 import "./card.css"
 
 export default function Card(props) {
-
+    
     function handleIncreaseClick(e) {
         let quantityInput = e.target.previousElementSibling;
         quantityInput.value++;
@@ -30,7 +30,7 @@ export default function Card(props) {
                         <div className="item-card-details-bottom">
                             <div>
                                 <button className="decrease-quantity" onClick={(e) => handleDecreaseClick(e)}>-</button>
-                                <input className="quantity" type="number" min={0} defaultValue={1}/>
+                                <input id={`quantity-${productDetail.id}`} className="quantity" type="number" min={0} defaultValue={1}/>
                                 <button className="increase-quantity" onClick={(e) => handleIncreaseClick(e)}>+</button>
                             </div>
                             <div>

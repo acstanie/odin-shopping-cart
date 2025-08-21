@@ -42,16 +42,18 @@ export default function Shop(props) {
 
     function handleAddToCartClick(e) {
         const productId = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
-        const quantityInput = document.querySelector(`.quantity`);
-        console.log(productId);
+        
 
         productDetails.forEach( (product) => {
             if (productId == `card-${product.id}`) {
-                for (let i = 0; i < props.cartItems.length; i++) {
-                    if(props.cartItems[i].id === product.id) {
-                        props.cartItems[i].quantity += Number(quantityInput.value);
+                const quantityInput = document.querySelector(`#quantity-${product.id}`);
+                if (props.cartItems) {
+                    for (let i = 0; i < props.cartItems.length; i++) {
+                        if(props.cartItems[i].id === product.id) {
+                            props.cartItems[i].quantity += Number(quantityInput.value);
 
-                        return;
+                            return;
+                        }
                     }
                 }
                 product.quantity += Number(quantityInput.value);
