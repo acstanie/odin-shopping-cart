@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { getItemLocalStorage } from './utils/localStorage';
 
 import NavBar from './components/navigation-bar/NavBar';
 import Home from "./pages/home/Home";
@@ -9,7 +10,8 @@ import Cart from "./pages/cart/Cart";
 import './app.css';
 
 export default function App() {
-    const [ cartItems, setCartItems ] = useState([]);
+    const cartItemsLs = getItemLocalStorage('cartItemsLs');
+    const [ cartItems, setCartItems ] = useState(cartItemsLs);
 
     return (
         <div className='app-content'>

@@ -1,17 +1,18 @@
-function dummy() {
-    const array = [
-        {
-            number: 'one', 
-        },
-        {
-            number: 'two',
-        },
-    ];
-
-    window.localStorage.setItem('numbers', JSON.stringify(array));
-    let received = window.localStorage.getItem('numbers');
-
-    console.log(JSON.parse(received));
+function setItemLocalStorage(key, value) {
+    try {
+        window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-export { dummy }
+function getItemLocalStorage(key) {
+    try {
+        const item = window.localStorage.getItem(key);
+        return item ? JSON.parse(item) : []
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export { setItemLocalStorage, getItemLocalStorage }

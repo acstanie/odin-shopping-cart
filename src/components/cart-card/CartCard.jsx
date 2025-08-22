@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { getItemLocalStorage, setItemLocalStorage } from '../../utils/localStorage';
 
 import './cartCard.css';
+
 
 export default function CartCard(props) {
     function handleCartDelClick(e) {
         const products = [...props.cartItems];
         const cartCardId = e.target.parentElement.parentElement.id;
-
+        const cartItemsLs = getItemLocalStorage('cartItemsLs');
 
         for (let i = 0; i < products.length; i++) {
             if (cartCardId == `cart-card-${products[i].id}`) {
@@ -14,6 +15,13 @@ export default function CartCard(props) {
                 props.setCartItems(products);
             } 
         }
+
+        cartItemsLs.forEach( (cartItem, index) => {
+            if (cartCardId == `cart-card-${cartItem.id}`) {
+                cartItemsLs.splice(index, 1);
+                setItemLocalStorage('cartItemsLs', cartItemsLs);
+            }
+        });
     }
 
     return(

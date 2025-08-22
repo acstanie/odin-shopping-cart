@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 
 import Card from "../../components/card/Card";
-import { dummy } from "../../utils/localStorage";
+import { getItemLocalStorage, setItemLocalStorage } from "../../utils/localStorage";
 
 import "./shop.css";
 
 export default function Shop(props) {
+
+
 
     const [ productDetails, setProductDetails ] = useState(null);
     const [ productDetailsError, setProductDetailsError ] = useState(null);
@@ -40,10 +42,14 @@ export default function Shop(props) {
         .finally(() => setProductDetailsLoading(false));
     }, []);
 
+    useEffect(() => { 
+        setItemLocalStorage('cartItemsLs', props.cartItems);
+
+    }, [props.cartItems]);
+
     function handleAddToCartClick(e) {
         const productId = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id;
         
-
         productDetails.forEach( (product) => {
             if (productId == `card-${product.id}`) {
                 const quantityInput = document.querySelector(`#quantity-${product.id}`);
@@ -51,13 +57,16 @@ export default function Shop(props) {
                     for (let i = 0; i < props.cartItems.length; i++) {
                         if(props.cartItems[i].id === product.id) {
                             props.cartItems[i].quantity += Number(quantityInput.value);
+                            setItemLocalStorage('cartItemsLs', props.cartItems);
 
-                            return;
+                            return; 
                         }
                     }
                 }
                 product.quantity += Number(quantityInput.value);
                 props.setCartItems([...props.cartItems, product]);
+
+                quantityInput.value = 1;
             } 
         });
     }
