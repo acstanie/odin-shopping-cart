@@ -19,7 +19,7 @@ export default function NavBar(props) {
                             <Link to="shop">Shop</Link>
                         </li>
                         <li className='nav-cart-link'>
-                            <Link to="cart">Cart<span>{props.cartItems.length}</span></Link>
+                            <Link to="cart">Cart <span className='nav-cart-indicator'>{props.cartItems.length}</span></Link>
                         </li>
                     </div>
                 </ul>

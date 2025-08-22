@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 
 import Card from "../../components/card/Card";
-import { getItemLocalStorage, setItemLocalStorage } from "../../utils/localStorage";
+import { setItemLocalStorage } from "../../utils/localStorage";
 
 import "./shop.css";
 
 export default function Shop(props) {
-
-
-
     const [ productDetails, setProductDetails ] = useState(null);
     const [ productDetailsError, setProductDetailsError ] = useState(null);
     const [ productDetailsLoading, setProductDetailsLoading ] = useState(true);
